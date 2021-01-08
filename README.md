@@ -61,6 +61,21 @@ CUDA_VISIBLE_DEVICES=9 python train_distill_bert.py \
   --custom_teacher ../teacher_preds/mnli_trained_on_sample2K_seed111.json --seed 111 --which_bias hans
 ```
 
+### Biased examples identification
+To obtain predictions of the shallow models, we train the same model architecture on the fraction of the dataset.
+For MNLI we subsample 2000 examples and train the model for 5 epochs. For obtaining shallow models of other datasets
+ please see the appendix of our paper.
+The shallow model can be obtained with the command below:
+ ```
+cd src/
+CUDA_VISIBLE_DEVICES=9 python train_distill_bert.py \
+  --output_dir ../experiments_shallow_mnli/bert_base_sampled2K_seed111 \
+  --do_train --do_eval --do_eval_on_train --mode none\
+  --seed 111 --which_bias hans --debug --num_train_epochs 5 --debug_num 2000
+```
+Once the training and the evaluation on train set is done, copy the probability json files in the output directory to
+ `../teacher_preds/mnli_trained_on_sample2K_seed111.json`. 
+
 ## Expected results
 
 Results on the MNLI ⮕ HANS setting without annealing:

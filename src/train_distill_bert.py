@@ -470,6 +470,9 @@ def main():
     parser.add_argument("--do_eval",
                         action='store_true',
                         help="Whether to run eval on the dev set.")
+    parser.add_argument("--do_eval_on_train",
+                        action='store_true',
+                        help="Whether to run eval on the train set.")
     parser.add_argument("--do_test",
                         action='store_true',
                         help="Whether to run test and create submission.")
@@ -872,7 +875,8 @@ def main():
         #                                           "../dataset/scitail/snli_format"))]
 
         # todo delete
-        # eval_datasets = [("mnli_train", load_mnli(True, sample=10000))]
+        if args.do_eval_on_train:
+            eval_datasets = [("mnli_train", load_mnli(True))]
     else:
         eval_datasets = []
 
