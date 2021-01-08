@@ -1,0 +1,1 @@
+CUDA_VISIBLE_DEVICES=15 python train_distill_bert.py --output_dir ../checkpoints_mnli/bert_confreg_lr5_epoch5_seed222 --do_train --do_eval --mode smoothed_distill --seed 222 --which_bias hans --num_train_epochs 5
