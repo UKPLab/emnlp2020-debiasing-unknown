@@ -1,0 +1,8 @@
+matplotlib==2.2.3
+tqdm==4.31.1
+numpy==1.15.4
+pytorch_pretrained_bert==0.6.1
+requests==2.21.0
+torch==1.0.1.post2
+apex==0.9.10dev
+scikit_learn==0.22.2.post1
